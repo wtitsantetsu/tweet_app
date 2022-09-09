@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "login" => "users#login_form"
+  post "login" => "users#login"
+  delete "logout" => "users#logout"
   post "users/:id/update" => "users#update"
   get "users/:id/edit" => "users#edit"
   get "signup" => "users#new"
@@ -12,7 +15,7 @@ Rails.application.routes.draw do
   get "posts/:id" =>  "posts#show"
   get "posts/:id/edit" => "posts#edit"
   post "posts/:id/update" => "posts#update"
-  post "posts/:id/destroy" => "posts#destroy"
+  delete "posts/:id/destroy" => "posts#destroy"
   get "/" => "home#top"
   get "about" => "home#about"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

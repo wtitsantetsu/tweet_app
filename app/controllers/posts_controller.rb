@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_action :authenticate_user, {only: [:index, :show, :edit, :update]}
+
   def index
     @posts = Post.all
   end
@@ -40,6 +43,6 @@ class PostsController < ApplicationController
     @post = Post.find_by(id:params[:id])
     @post.destroy
     flash[:notice] = "投稿を削除しました。"
-    redirect_to("/posts/index")
+    redirect_to("/posts/index", status: :see_other)
   end
 end
